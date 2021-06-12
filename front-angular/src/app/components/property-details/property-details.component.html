@@ -1,0 +1,71 @@
+<div class="row">
+  <div *ngIf="currentProperty.id" class="col-md-6">
+    <h4>Property</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentProperty.title"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+
+          class="form-control"
+          id="description"
+          [(ngModel)]="currentProperty.description"
+          name="description"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label><strong>Status:</strong></label>
+        {{ currentProperty.active ? "Active" : "N/A" }}
+      </div>
+    </form>
+
+    <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentProperty.active"
+      (click)="updatePublished(false)"
+    >
+      Deactivate
+    </button>
+    <button
+      *ngIf="!currentProperty.active"
+      class="badge badge-primary mr-2"
+      (click)="updatePublished(true)"
+    >
+      Set Active
+    </button>
+
+    <button class="badge badge-danger mr-2" (click)="deleteProperty()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateProperty()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+  <div class="col-md-6">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+      <div *ngIf="place">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </div>
+    </agm-map>
+  </div>
+  <div *ngIf="!currentProperty.id">
+    <br />
+    <p>Cannot access this Property...</p>
+  </div>
+</div>

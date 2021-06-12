@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-1">
+    <div class="input-group mb-3">
+      <a routerLink="add">
+        <button
+            class="btn btn-outline-secondary"
+            type="button"
+          >
+            Add
+          </button>
+      </a>
+    </div>
+  </div>
+  <div class="col">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by title"
+        [(ngModel)]="title"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchTitle()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+  <div class="col mt-4"
+    *ngFor="let property of propertys; let i = index"
+  >
+  <a routerLink="/propertys/{{ property.id }}" class="text-decoration-none">
+    <div class="card" >
+      <img src="{{ property.image || '../../../assets/img/card.svg'}}" class="card-img-top">
+      <div class="card-id  {{property.active ? 'active' : 'not-active' }}">{{ property.id }}</div>
+      <div class="card-body">
+        <h5 class="card-title">{{ property.title }}</h5>
+        <p class="card-text">{{ this.truncate(property.description || '') }}</p>
+      </div>
+    </div>
+    </a>
+  </div>
+  <div *ngIf="propertys?.length == 0">
+    No results
+  </div>
+</div>

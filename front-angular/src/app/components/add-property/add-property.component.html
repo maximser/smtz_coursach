@@ -1,0 +1,71 @@
+<div class="row mt-5">
+<div class="col-sm-6">
+  <div class="submit-form">
+    <h3>Add new property</h3>
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="property.title"
+          name="title"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="property.description"
+          name="description"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="place">Place</label>
+        <input
+          class="form-control"
+          id="place"
+          required
+          [(ngModel)]="property.place"
+          name="place"
+        />
+      </div>
+
+      <div class="form-group mt-3">
+        <button (click)="saveProperty()" class="btn btn-success">Submit</button>
+      </div>
+
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Property was submitted successfully!</h4>
+    </div>
+  </div>
+
+</div>
+<div class="col-sm-6">
+
+  <div class="form-group">
+    <label for="image">Image url</label>
+    <input
+      class="form-control"
+      id="image"
+      required
+      [(ngModel)]="property.image"
+      name="image"
+    />
+  </div>
+  <img src="{{ property.image || '../../../assets/img/card.svg'}}" class="preview">
+</div>
+</div>
+<div>
+<div class="col mt-5">
+  <agm-map (mapClick)="mapClicked($event)" [latitude]="lat" [longitude]="lng"></agm-map>
+</div>
+</div>

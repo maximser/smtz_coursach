@@ -1,0 +1,32 @@
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+.card-id {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: black;
+  padding: 2px 15px;
+  background-color: white;
+  border-radius: 5px;
+
+}
+
+.card-id::before{
+  content: '#';
+}
+img{
+  object-fit: cover;
+  height: 100px;
+}
+
+.not-active {
+  background-color: rgba(199, 146, 146, 0.4);
+}
+
+.active {
+  background-color: rgba(42, 252, 95, 0.4);
+}

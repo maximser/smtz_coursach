@@ -1,0 +1,12 @@
+.submit-form {
+  max-width: 400px;
+  margin: auto;
+}
+
+agm-map {
+  height: 300px;
+}
+
+.preview{
+  max-height: 200px;
+}
